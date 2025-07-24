@@ -1,4 +1,6 @@
-<html lang="tr"><head>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEO-EDIT | Kuantum Resim Düzenleyici</title>
@@ -550,12 +552,12 @@
     </style>
 </head>
 <body>
-    <div class="floating-particles" id="particles"><div class="particle" style="width: 7.85996px; height: 7.85996px; left: 22.6349%; top: 78.4934%; opacity: 0.489685; animation-delay: 1.64771s; animation-duration: 12.7645s;"></div><div class="particle" style="width: 4.83819px; height: 4.83819px; left: 83.1407%; top: 7.74596%; opacity: 0.52263; animation-delay: 14.774s; animation-duration: 15.0932s;"></div><div class="particle" style="width: 5.35032px; height: 5.35032px; left: 75.6433%; top: 48.0741%; opacity: 0.450227; animation-delay: 5.10401s; animation-duration: 19.5513s;"></div><div class="particle" style="width: 8.65617px; height: 8.65617px; left: 84.4507%; top: 16.3195%; opacity: 0.43841; animation-delay: 11.0512s; animation-duration: 19.1094s;"></div><div class="particle" style="width: 3.43466px; height: 3.43466px; left: 95.3855%; top: 86.421%; opacity: 0.469321; animation-delay: 1.78619s; animation-duration: 19.1541s;"></div><div class="particle" style="width: 8.32522px; height: 8.32522px; left: 75.0221%; top: 97.7436%; opacity: 0.232261; animation-delay: 7.53816s; animation-duration: 15.3714s;"></div><div class="particle" style="width: 2.26032px; height: 2.26032px; left: 3.61778%; top: 24.0321%; opacity: 0.561986; animation-delay: 13.4234s; animation-duration: 12.8218s;"></div><div class="particle" style="width: 8.5991px; height: 8.5991px; left: 11.5506%; top: 76.0779%; opacity: 0.238967; animation-delay: 5.05877s; animation-duration: 19.9324s;"></div><div class="particle" style="width: 2.82651px; height: 2.82651px; left: 4.09106%; top: 81.5917%; opacity: 0.429465; animation-delay: 8.23197s; animation-duration: 10.0456s;"></div><div class="particle" style="width: 2.24071px; height: 2.24071px; left: 62.6907%; top: 13.9302%; opacity: 0.222107; animation-delay: 11.8789s; animation-duration: 12.2051s;"></div><div class="particle" style="width: 3.80499px; height: 3.80499px; left: 52.764%; top: 36.1003%; opacity: 0.128595; animation-delay: 6.46564s; animation-duration: 13.0237s;"></div><div class="particle" style="width: 3.39771px; height: 3.39771px; left: 94.3843%; top: 98.6558%; opacity: 0.186324; animation-delay: 2.37281s; animation-duration: 13.7658s;"></div><div class="particle" style="width: 6.43528px; height: 6.43528px; left: 23.7671%; top: 22.7778%; opacity: 0.330093; animation-delay: 5.07954s; animation-duration: 11.5056s;"></div><div class="particle" style="width: 5.24685px; height: 5.24685px; left: 19.3838%; top: 7.05362%; opacity: 0.310864; animation-delay: 0.472974s; animation-duration: 16.534s;"></div><div class="particle" style="width: 7.91375px; height: 7.91375px; left: 76.9452%; top: 54.6034%; opacity: 0.463705; animation-delay: 2.17764s; animation-duration: 19.3462s;"></div><div class="particle" style="width: 2.82077px; height: 2.82077px; left: 30.5653%; top: 77.7041%; opacity: 0.439642; animation-delay: 10.5169s; animation-duration: 13.736s;"></div><div class="particle" style="width: 9.79421px; height: 9.79421px; left: 48.938%; top: 41.0787%; opacity: 0.370647; animation-delay: 7.54616s; animation-duration: 17.5663s;"></div><div class="particle" style="width: 4.99677px; height: 4.99677px; left: 18.3857%; top: 61.2286%; opacity: 0.238859; animation-delay: 13.0072s; animation-duration: 13.0212s;"></div><div class="particle" style="width: 9.08939px; height: 9.08939px; left: 25.8669%; top: 21.7064%; opacity: 0.423702; animation-delay: 1.91303s; animation-duration: 15.9185s;"></div><div class="particle" style="width: 9.74557px; height: 9.74557px; left: 71.7957%; top: 0.991503%; opacity: 0.29448; animation-delay: 10.3092s; animation-duration: 10.6488s;"></div></div>
+    <div class="floating-particles" id="particles"></div>
     
     <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
     
     <div class="sidebar" id="sidebar">
-        <h2>Görsel Oluşturucu</h2>
+        <h2>NEO-EDIT v4.2</h2>
         
         <!-- Tuval Ayarları -->
         <div class="panel">
@@ -701,7 +703,7 @@
     
     <div class="main-content">
         <div class="top-bar">
-            
+            <button class="tool-btn" id="undo-btn">⏪ Geri Al</button>
             <div class="action-btns">
                 <button class="tool-btn" id="save-project">Projeyi Kaydet</button>
                 <button class="tool-btn download-btn" id="download-btn">Resmi İndir</button>
@@ -712,14 +714,19 @@
             <div class="zoom-controls">
                 <button class="zoom-btn tool-btn" id="zoom-in" title="Yakınlaştır">+</button>
                 <button class="zoom-btn tool-btn" id="zoom-out" title="Uzaklaştır">-</button>
-                <button class="zoom-btn tool-btn" id="zoom-reset" title="Sıfırla">100</button>
+                <button class="zoom-btn tool-btn" id="zoom-reset" title="Sıfırla">100%</button>
             </div>
         </div>
     </div>
     
+    <div class="status-bar">
+        <div class="status-item">Kuantum Mod: Aktif</div>
+        <div class="status-item">VRAM: 12.4GB / 16GB</div>
+        <div class="status-item">Çözünürlük: 800×600px</div>
+        <div class="status-item">FPS: 60</div>
+    </div>
     
-    
-    <div class="tooltip" id="tooltip" style="left: 1272px; top: 700px; opacity: 0;">Yakınlaştır</div>
+    <div class="tooltip" id="tooltip"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1486,6 +1493,5 @@
             updateLayersList();
         });
     </script>
-
-
-</body></html>
+</body>
+</html>
