@@ -585,6 +585,10 @@
             
             <label for="bg-opacity">Şeffaflık:</label>
             <input type="range" id="bg-opacity" min="0" max="100" value="100">
+
+<label for="bg-image">Resim (arka plan):</label>
+<input type="file" id="bg-image" accept="image/*">
+
             
             <button class="tool-btn" id="apply-bg">Uygula</button>
         </div>
@@ -729,7 +733,26 @@
     <div class="tooltip" id="tooltip"></div>
 
     <script>
+let bgImage = null;
         document.addEventListener('DOMContentLoaded', function() {
+
+// Arka plan resmi yükleme
+document.getElementById('bg-image').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const img = new Image();
+        img.onload = function() {
+            bgImage = img;
+            redrawCanvas();
+        };
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+});
+
             // Floating particles effect
             const particlesContainer = document.getElementById('particles');
             const particleCount = 20;
@@ -1446,17 +1469,25 @@
             }
             
             function redrawCanvas() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
-                // Arka planı çiz
-                const bgColor = document.getElementById('bg-color').value;
-                const bgOpacity = parseInt(document.getElementById('bg-opacity').value) / 100;
-                ctx.fillStyle = bgColor;
-                ctx.globalAlpha = bgOpacity;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.globalAlpha = 1;
-                
-                // Tüm öğeleri çiz (ilk eklenen en altta olacak şekilde)
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+const bgOpacity = parseInt(document.getElementById('bg-opacity').value) / 100;
+
+if (bgImage) {
+    ctx.save();
+    ctx.globalAlpha = bgOpacity;
+    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+    ctx.restore();
+} else {
+    const bgColor = document.getElementById('bg-color').value;
+    ctx.save();
+    ctx.fillStyle = bgColor;
+    ctx.globalAlpha = bgOpacity;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
+}
+// Tüm öğeleri çiz (ilk eklenen en altta olacak şekilde)
                 elements.forEach(element => {
                     if (element.type === 'image') {
                         // Döndürme için kaydetme ve geri yükleme
