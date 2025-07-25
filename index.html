@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <link href="https://fonts.cdnfonts.com/css/quantum" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEO-EDIT | Kuantum Resim Düzenleyici</title>
@@ -19,7 +18,12 @@
             --danger: #ff3860;
         }
         
-        
+        @font-face {
+            font-family: 'Quantum';
+            src: url('https://fonts.cdnfonts.com/css/quantum') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
         
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -63,11 +67,6 @@
         }
         
         .sidebar-collapsed {
-    transform: translateX(-100%);
-}
-body.sidebar-open {
-    overflow: hidden;
-}
             transform: translateX(-90%);
         }
         
@@ -807,7 +806,6 @@ document.getElementById('bg-image').addEventListener('change', function(e) {
             
             sidebarToggle.addEventListener('click', () => {
                 sidebar.classList.toggle('sidebar-collapsed');
-document.body.classList.toggle('sidebar-open');
                 sidebarToggle.textContent = sidebar.classList.contains('sidebar-collapsed') ? '☰' : '✕';
             });
             
@@ -1393,7 +1391,7 @@ document.body.classList.toggle('sidebar-open');
                 const centerX = selectedElement.x + selectedElement.width / 2;
                 const centerY = selectedElement.y + selectedElement.height / 2;
                 const angle = Math.atan2(y - centerY, x - centerX) * 180 / Math.PI;
-                selectedElement.rotation = ((angle - startAngle) % 360 + 360) % 360;
+                selectedElement.rotation = angle - startAngle;
                 
                 if (selectedElement.type === 'image') {
                     document.getElementById('img-rotation').value = selectedElement.rotation;
